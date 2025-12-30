@@ -36,21 +36,16 @@ def create_profile(username):
 
 def cek(username):
     df = pd.read_csv(file_path)
-    cariProfil = df.where(df['Username'] == username)
-
-    nama      = cariProfil.loc[0,'Username']
-    imt       = cariProfil.loc[0,'IMT']
-    nama, imt = str(nama), str(imt)
-
-    if nama == 'nan' and imt == 'nan': 
-        return False
-    else:
-        return True
+    df = df['Username']
+    for i in df:
+        if i == username:
+            return True
+    return False
 
 def profile(username):
     df = pd.read_csv(file_path)
-    profileUser = df.where(df['Username'] == username)
-
+    profileUser = df.where(df['Username'] == username).dropna().reset_index(drop=True)
+    print(profileUser)
     nama    = profileUser.loc[0,'Username']
     imt     = profileUser.loc[0,'IMT']
     berat   = profileUser.loc[0,'BeratBadan']

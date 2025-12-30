@@ -4,6 +4,7 @@ import bmi
 import resep
 import calorytrack as ct
 import profil
+import pandas as pd
 
 file_path = 'data_Akun.csv'
 
